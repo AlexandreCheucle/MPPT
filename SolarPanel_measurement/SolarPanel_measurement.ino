@@ -1,7 +1,8 @@
 const int sensorPin0 = A0;
 const int sensorPin1 = A1;
 const int Val_res = 20;
-const int controlpin = 2;
+const int controlpin = 3;
+const int alpha = 50;
 
 void setup()
 {
@@ -12,7 +13,7 @@ void setup()
 void loop()
 {
 
-	digitalWrite(controlpin, HIGH);
+	analogWrite(controlpin, alpha);
 
   int sensorVal0 = analogRead(sensorPin0);
   int sensorVal1 = analogRead(sensorPin1);
