@@ -13,6 +13,12 @@ int pin1Moteur1=6; //pin de commande moteur 1
 int pin2Moteur1=7; // pin de commande moteur 1
 int pinPMoteur1=5;// pin PWM moteur 1
 
+float Val0;
+float Val1;
+float Val2;
+float Val3;
+
+float Ipanel;
 float power_old = 0;
 float power = 0;
 
@@ -107,10 +113,10 @@ void mesure_IV() {
 	int sensorVal2 = analogRead(sensorPin2); //Vout ampli-op
 	int sensorVal3 = analogRead(sensorPin3); // Vin- ampli op
 
-	float Val0 = (sensorVal0 / 1024.0) * 5.0;
-	float Val1 = ((sensorVal1)/1024.0)*5.0;
-	float Val2 = ((sensorVal2)/1024.0)*5.0;
-	float Val3 = ((sensorVal3)/1024.0)*5.0;
+	Val0 = (sensorVal0 / 1024.0) * 5.0;
+	Val1 = ((sensorVal1)/1024.0)*5.0;
+	Val2 = ((sensorVal2)/1024.0)*5.0;
+	Val3 = ((sensorVal3)/1024.0)*5.0;
 
 
  	Serial.print("V0 = ");
@@ -131,7 +137,8 @@ void mesure_IV() {
 	Serial.print(sensorVal2);
 	Serial.print("\n");
 
-	float Ipanel = Val2/(gain*val_res) * 1000;
+	Ipanel = Val2/(gain*val_res) * 1000;
+	
 	Serial.print("Ipanel = ");
 	Serial.print(Ipanel);
 	Serial.print("mA ");
